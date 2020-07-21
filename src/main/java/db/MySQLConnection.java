@@ -12,7 +12,7 @@ import entity.Item;
 import entity.Item.ItemBuilder;
 
 
-public class MySQLConnection { // 建立连接
+public class MySQLConnection { // create connection
 	private Connection conn;
 
 	public MySQLConnection() {
@@ -40,11 +40,11 @@ public class MySQLConnection { // 建立连接
 			System.err.println("DB connection failed");
 			return;
 		}
-		saveItem(item); // 保存item
+		saveItem(item); 
 		String sql = "INSERT INTO history (user_id, item_id) VALUES (?, ?)";
 		try {
 			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setString(1, userId); //不仅替换string，而且加引号，更安全（即用户的输入只会被处理成string，不会有逻辑上的功能）
+			statement.setString(1, userId); 
 			statement.setString(2, item.getItemId());
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -52,7 +52,7 @@ public class MySQLConnection { // 建立连接
 		}
 	}
 
-	public void unsetFavoriteItems(String userId, String itemId) { // 取消喜欢
+	public void unsetFavoriteItems(String userId, String itemId) { 
 		if (conn == null) {
 			System.err.println("DB connection failed");
 			return;
@@ -145,12 +145,12 @@ public class MySQLConnection { // 建立连接
 	}
 
 	
-	public void saveItem(Item item) { // help function, 保存item
+	public void saveItem(Item item) { 
 		if (conn == null) {
 			System.err.println("DB connection failed");
 			return;
 		}
-		String sql = "INSERT IGNORE INTO items VALUES (?, ?, ?, ?, ?)"; // 如果item已存在，就不存了
+		String sql = "INSERT IGNORE INTO items VALUES (?, ?, ?, ?, ?)"; 
 		try {
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, item.getItemId());
