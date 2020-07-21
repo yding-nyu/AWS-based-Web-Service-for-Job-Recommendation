@@ -1,8 +1,5 @@
 (function() {
 
-  /**
-   * Variables
-   */
   var user_id = '1111';
   var user_fullname = 'John';
   var lng = -122.08;
@@ -12,7 +9,6 @@
    * Initialize major event handlers
    */
   function init() {
-    // register event listeners
     document.querySelector('#login-form-btn').addEventListener('click', onSessionInvalid);
     document.querySelector('#login-btn').addEventListener('click', login);
     document.querySelector('#register-form-btn').addEventListener('click', showRegisterForm);
@@ -21,24 +17,19 @@
     document.querySelector('#fav-btn').addEventListener('click', loadFavoriteItems);
     document.querySelector('#recommend-btn').addEventListener('click', loadRecommendedItems);
     validateSession();
-    // onSessionValid({"user_id":"1111","name":"John Smith","status":"OK"});
   }
 
-  /**
-   * Session
-   */
   function validateSession() {
     onSessionInvalid();
     // The request parameters
     var url = './login';
     var req = JSON.stringify({});
 
-    // display loading message
+
     showLoadingMessage('Validating session...');
 
     // make AJAX call
     ajax('GET', url, req,
-      // session is still valid
       function(res) {
         var result = JSON.parse(res);
 
@@ -274,11 +265,6 @@
   // Helper Functions
   // -----------------------------------
 
-  /**
-   * A helper function that makes a navigation button active
-   *
-   * @param btnId - The id of the navigation button
-   */
   function activeBtn(btnId) {
     var btns = document.querySelectorAll('.main-nav-btn');
 
@@ -310,12 +296,6 @@
       msg + '</p>';
   }
 
-  /**
-   * A helper function that creates a DOM element <tag options...>
-   * @param tag
-   * @param options
-   * @returns {Element}
-   */
   function $create(tag, options) {
     var element = document.createElement(tag);
     for (var key in options) {
