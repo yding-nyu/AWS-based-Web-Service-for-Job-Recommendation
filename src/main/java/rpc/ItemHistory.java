@@ -15,9 +15,7 @@ import org.json.JSONObject;
 import db.MySQLConnection;
 import entity.Item;
 
-/**
- * Servlet implementation class ItemHistory
- */
+
 public class ItemHistory extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,15 +24,14 @@ public class ItemHistory extends HttpServlet {
      */
     public ItemHistory() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false); //确保用户要login才能搜索
+
+		HttpSession session = request.getSession(false); 
 		if (session == null) {
 			response.setStatus(403);
 			return;
@@ -62,7 +59,6 @@ public class ItemHistory extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		if (session == null) {
 			response.setStatus(403);
@@ -83,7 +79,6 @@ public class ItemHistory extends HttpServlet {
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		if (session == null) {
 			response.setStatus(403);
