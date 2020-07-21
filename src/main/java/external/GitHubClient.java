@@ -28,7 +28,7 @@ public class GitHubClient {
 
 	public List<Item> search(double lat, double lon, String keyword) {
 		if (keyword == null) { 
-			keyword = DEFAULT_KEYWORD; //keyword 是描述description的
+			keyword = DEFAULT_KEYWORD; 
 		}
 		try {
 			keyword = URLEncoder.encode(keyword, "UTF-8");
@@ -67,11 +67,8 @@ public class GitHubClient {
 		List<Item> itemList = new ArrayList<>();
 		List<String> descriptionList = new ArrayList<>();
 		for (int i = 0; i < array.length(); i++) {
-			// We need to extract keywords from description since GitHub API
-			// doesn't return keywords.
 			String description = getStringFieldOrEmpty(array.getJSONObject(i), "description");
 			if (description.equals("") || description.equals("\n")) {
-				// 如果description为空，则取标题
 				descriptionList.add(getStringFieldOrEmpty(array.getJSONObject(i), "title"));
 			} else {
 				descriptionList.add(description);
@@ -91,7 +88,7 @@ public class GitHubClient {
 			builder.setUrl(getStringFieldOrEmpty(object, "url"));
 			builder.setImageUrl(getStringFieldOrEmpty(object, "company_logo"));
 			List<String> list = keywords.get(i);
-			builder.setKeywords(new HashSet<String>(list)); //用hashset为了dedup，去重
+			builder.setKeywords(new HashSet<String>(list)); 
 			Item item = builder.build();
 			itemList.add(item);
 		}
