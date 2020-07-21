@@ -12,7 +12,7 @@ import com.monkeylearn.MonkeyLearnException;
 import com.monkeylearn.MonkeyLearnResponse;
 
 public class MonkeyLearnClient {
-	private static final String API_KEY = "fa3e730907520bd70e785da1ed0cf2c26f8d23f6";// make sure change it to your api key.
+	private static final String API_KEY = "YOUR_API_KEY";// make sure change it to your api key.
        public static void main(String[] args) {
 		
 		String[] textList = {
@@ -35,7 +35,6 @@ public class MonkeyLearnClient {
 
 		MonkeyLearn ml = new MonkeyLearn(API_KEY);
 		String modelID = "ex_YCya9nrn";
-		// Use the keyword extractor
 		ExtraParam[] extraParams = { new ExtraParam("max_keywords", "3") };
 		
 		MonkeyLearnResponse response;
@@ -48,7 +47,6 @@ public class MonkeyLearnClient {
 		}
 		return new ArrayList<>();
 	}
-    // 帮助函数，把json array 转换成list<list>
 	private static List<List<String>> getKeywords(JSONArray mlResultArray) {
 		List<List<String>> topKeywords = new ArrayList<>();
 		// Iterate the result array and convert it to our format.
@@ -57,7 +55,6 @@ public class MonkeyLearnClient {
 			JSONArray keywordsArray = (JSONArray) mlResultArray.get(i);
 			for (int j = 0; j < keywordsArray.size(); ++j) {
 				JSONObject keywordObject = (JSONObject) keywordsArray.get(j);
-				// We just need the keyword, excluding other fields.
 				String keyword = (String) keywordObject.get("keyword");
 				keywords.add(keyword);
 
