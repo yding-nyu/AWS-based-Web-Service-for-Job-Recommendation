@@ -29,7 +29,6 @@ public class SearchItem extends HttpServlet {
      */
     public SearchItem() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -63,18 +62,7 @@ public class SearchItem extends HttpServlet {
 			array.put(obj);
 		}
 		RpcHelper.writeJsonArray(response, array);
-
-
-//		array.put(new JSONObject().put("username", "abcd"));
-//		array.put(new JSONObject().put("username", "1234"));
-//		RpcHelper.writeJsonArray(response, array);
-//		if (request.getParameter("username") != null) {
-//			JSONObject obj = new JSONObject();
-//			String username = request.getParameter("username");
-//			obj.put("username", username);
-//			writer.print(obj);
-//		    }
-		}
+	}
 
 
 	/**
