@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 
 public class Item {
-	private String itemId; //private表明我们可以管理暴露在外的功能，写成public的话就可以随便改了，不安全
+	private String itemId; 
 	private String name;
 	private String address;
 	private Set<String> keywords;
@@ -41,7 +41,7 @@ public class Item {
 	public String getUrl() {
 		return url;
 	}
-	// 将item转成json object，会有function进一步再将其变成json string显示在前端
+	
 	public JSONObject toJSONObject() {
 		JSONObject obj = new JSONObject();
 		obj.put("item_id", itemId);
